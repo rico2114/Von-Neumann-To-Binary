@@ -49,11 +49,11 @@ public class App {
         while ((line = compiler.consume()) != null) {
             if (line.contains(":")) {
                 InstructionInterpreter.interpret(line, compiler);
+                compiler.deleteTag(compiler.getProgramCounter() - 1);
             }
         }
         compiler.clearProgramCounter();
         // Now the actual conversion
-        int lineNumber = 0;
         while ((line = compiler.consume()) != null) {
             if (line.contains(":")) {
                 continue;
@@ -62,7 +62,7 @@ public class App {
             final Instruction instruction = InstructionInterpreter.interpret(line, compiler);
             System.out.print(line.replace(";", "") + " ==> ");
             if (instruction != null) {
-                System.out.println((lineNumber ++) + ") " + instruction.toString());
+                System.out.println(compiler.getProgramCounter() - 1 + ") " + instruction.toString());
             }
         }
     }
