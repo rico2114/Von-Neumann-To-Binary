@@ -16,7 +16,7 @@ import java.util.LinkedList;
 public class Compiler implements Consumer<String> {
 
     /**
-     * Represents the file reader of the compiler
+     * Represents the lines read by the compiler
      */
     private final ArrayList<String> lines = new ArrayList<>();
 
@@ -24,11 +24,6 @@ public class Compiler implements Consumer<String> {
      * Represents all the tags
      */
     private final HashMap<String, Integer> allocatedTags = new HashMap<>();
-
-    /**
-     * Represents the remaining instructions to be executed
-     */
-    private final LinkedList<Integer> remainingInstructions = new LinkedList<>();
 
     /**
      * Represents the program counter of the compiler
@@ -54,6 +49,14 @@ public class Compiler implements Consumer<String> {
             return null;
         }
         return lines.get(programCounter ++);
+    }
+
+    /**
+     * Deletes a given tag in the specified line
+     * @param line  the line
+     */
+    public void deleteTag(final int line) {
+        lines.remove(line);
     }
 
     /**
