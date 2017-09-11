@@ -5,6 +5,9 @@ import compiler.core.Instruction;
 import compiler.core.InstructionInterpreter;
 
 import java.io.FileNotFoundException;
+import java.util.regex.Pattern;
+
+import static compiler.core.regex.RegexConstants.NAME;
 
 /**
  * Created by Sebastían on 9/09/2017.
@@ -50,14 +53,16 @@ public class App {
         }
         compiler.clearProgramCounter();
         // Now the actual conversion
+        int lineNumber = 0;
         while ((line = compiler.consume()) != null) {
             if (line.contains(":")) {
                 continue;
             }
 
             final Instruction instruction = InstructionInterpreter.interpret(line, compiler);
+            System.out.print(line.replace(";", "") + " ==> ");
             if (instruction != null) {
-                System.out.println(instruction.toString());
+                System.out.println((lineNumber ++) + ") " + instruction.toString());
             }
         }
     }
