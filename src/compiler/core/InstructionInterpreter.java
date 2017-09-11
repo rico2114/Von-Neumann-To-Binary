@@ -42,7 +42,7 @@ public class InstructionInterpreter {
         if (line.isEmpty()) {
             return null;
         }
-        // syntax sugar
+        // Syntax sugar
         line = line.toUpperCase();
         line = line.replaceAll(";", "");
 
@@ -62,18 +62,18 @@ public class InstructionInterpreter {
                 int opcode = family.calculate(line, operationName);
                 if (opcode != -1) {
                     if (opcode == 54) { //  NOP
-                        return new Instruction(0, 0, 0, 0);
+                        return new Instruction(91, 0, 0, 0);
                     }
                     if ((opcode >= 49 && opcode <= 51) || opcode == 55) { // BRM, BRI, BRME, JUMP
                         if (opcode == 55) { // JUMP
-                            return new Instruction(opcode, 0, 0, context.getTagLine(operationParameters)); // straight jump
+                            return new Instruction(opcode, 0, 0, context.getTagLine(operationParameters)); // Straight jump
                         } else {
                             int[] parameters = interpretParameters(operationParameters, context);
-                            return new Instruction(opcode, parameters[0], parameters[1], parameters[2] - context.getProgramCounter()); // pc modification
+                            return new Instruction(opcode, parameters[0], parameters[1], parameters[2] - context.getProgramCounter()); // Pc modification
                         }
                     } else {
                         int[] parameters = interpretParameters(operationParameters, context);
-                        return new Instruction(opcode, parameters[0], parameters[1], parameters[2]); // straight interpretation
+                        return new Instruction(opcode, parameters[0], parameters[1], parameters[2]); // Straight interpretation
                     }
                 }
             }
