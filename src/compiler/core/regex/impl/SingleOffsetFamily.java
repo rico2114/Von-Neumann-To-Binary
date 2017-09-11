@@ -20,7 +20,7 @@ public class SingleOffsetFamily implements RegexFamilyInterface {
      * This family starts from the opcode 84 to the 90 (both inclusive)
      */
     private static final Pattern[] INSTRUCTION_FORMAT  = new Pattern[] {
-            Pattern.compile(NAME + " \\[R\\d+\\+\\d+\\],\\[R\\d+\\]"), // OP [R5 + 2], [R4]
+            Pattern.compile(NAME + " \\[" + RegexConstants.REGISTER_CHAIN + "\\+" + RegexConstants.IMMEDIATE_CHAIN + "\\],\\[" + RegexConstants.REGISTER_CHAIN  +"\\]"), // OP [R5 + 2], [R4]
     };
 
     /**

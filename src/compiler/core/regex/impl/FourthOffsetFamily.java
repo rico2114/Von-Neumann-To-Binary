@@ -21,10 +21,10 @@ public class FourthOffsetFamily implements RegexFamilyInterface {
      * This family starts from the opcode 56 to the 83 (both inclusive)
      */
     private static final Pattern[] INSTRUCTION_FORMAT  = new Pattern[] {
-            Pattern.compile(NAME + " R\\d+,\\[\\d+\\]"), // OP R5, [20]
-            Pattern.compile(NAME + " \\[R\\d+\\],\\[\\d+\\]"), // OP [R5], [48]
-            Pattern.compile(NAME + " \\[\\d+\\],R\\d+"), // OP [5], R2
-            Pattern.compile(NAME + " \\[\\d+\\],\\[R\\d+\\]"), // OP [25], [R5]
+            Pattern.compile(NAME + " " + RegexConstants.REGISTER_CHAIN + ",\\[" + RegexConstants.IMMEDIATE_CHAIN + "\\]"), // OP R5, [20]
+            Pattern.compile(NAME + " \\[" + RegexConstants.REGISTER_CHAIN + "\\],\\[" + RegexConstants.IMMEDIATE_CHAIN + "\\]"), // OP [R5], [48]
+            Pattern.compile(NAME + " \\[" + RegexConstants.IMMEDIATE_CHAIN + "\\]," + RegexConstants.REGISTER_CHAIN), // OP [5], R2
+            Pattern.compile(NAME + " \\[" + RegexConstants.IMMEDIATE_CHAIN + "\\],\\[" + RegexConstants.REGISTER_CHAIN + "\\]"), // OP [25], [R5]
     };
 
     @Override

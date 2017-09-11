@@ -21,13 +21,13 @@ public class SevenOffsetFamily implements RegexFamilyInterface {
      * This family starts from the opcode 0 to the 48 (both inclusive)
      */
     private static final Pattern[] INSTRUCTION_FORMAT  = new Pattern[] {
-            Pattern.compile(NAME + " R\\d+,R\\d+"), // OP R5, R6
-            Pattern.compile(NAME + " R\\d+,\\d+"), // OP R5, 48
-            Pattern.compile(NAME + " \\[R\\d+\\],R\\d+"), // OP [R5], R2
-            Pattern.compile(NAME + " \\[R\\d+\\+\\d\\],R\\d+"), // OP [R5+4], R4
-            Pattern.compile(NAME + " R\\d+,\\[R\\d+\\]"), // OP R5, [R4]
-            Pattern.compile(NAME + " R\\d+,\\[R\\d+\\+\\d+\\]"), // OP R5, [R1+48]
-            Pattern.compile(NAME + " \\[R\\d+\\],\\[R\\d+\\]"), // OP [R5], [R1]
+            Pattern.compile(NAME + " " + RegexConstants.REGISTER_CHAIN + "," + RegexConstants.REGISTER_CHAIN), // OP R5, R6
+            Pattern.compile(NAME + " " + RegexConstants.REGISTER_CHAIN + "," + RegexConstants.IMMEDIATE_CHAIN), // OP R5, 48
+            Pattern.compile(NAME + " \\[" + RegexConstants.REGISTER_CHAIN + "\\]," + RegexConstants.REGISTER_CHAIN), // OP [R5], R2
+            Pattern.compile(NAME + " \\[" + RegexConstants.REGISTER_CHAIN + "\\+" + RegexConstants.IMMEDIATE_CHAIN +"\\]," + RegexConstants.REGISTER_CHAIN), // OP [R5+4], R4
+            Pattern.compile(NAME + " " + RegexConstants.REGISTER_CHAIN + ",\\[" + RegexConstants.REGISTER_CHAIN + "\\]"), // OP R5, [R4]
+            Pattern.compile(NAME + " " + RegexConstants.REGISTER_CHAIN + ",\\[" + RegexConstants.REGISTER_CHAIN + "\\+" + RegexConstants.IMMEDIATE_CHAIN + "\\]"), // OP R5, [R1+48]
+            Pattern.compile(NAME + " \\[" + RegexConstants.REGISTER_CHAIN + "\\],\\[" + RegexConstants.REGISTER_CHAIN + "\\]"), // OP [R5], [R1]
     };
 
     @Override

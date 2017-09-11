@@ -15,6 +15,16 @@ public class RegexConstants {
     public static final String NAME = "[a-zA-Z]{2,4}";
 
     /**
+     * Represents the chain used for the register validation
+     */
+    public static final String REGISTER_CHAIN = "R\\d{1,2}";
+
+    /**
+     * Represents the chain used for the immediate validation
+     */
+    public static final String IMMEDIATE_CHAIN = "\\d{1,5}";
+
+    /**
      * Represents all the default basic operations
      */
     public static final Pattern[] BASIC_OPERATION_TYPE = new Pattern[] {
