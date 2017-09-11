@@ -33,7 +33,7 @@ public class Instruction {
         String rightOperandBinary = addOrRemove(Integer.toBinaryString(rightOperand), 4);
         String immediateBinary = addOrRemove(Integer.toBinaryString(immediate), 5);
 
-        return operationBinary + '|' + leftOperandBinary +
+       return operationBinary + '|' + leftOperandBinary +
                 '|' + rightOperandBinary + '|' + immediateBinary;
         // todo: remove this whenever we are done with the testing
         //return "" + operation + '|' + leftOperand + '|' + rightOperand + '|' + immediate;
